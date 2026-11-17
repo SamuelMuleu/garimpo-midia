@@ -3,23 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Garimpo de Ofertas</title>
-<meta name="description" content="Achadinhos e ofertas do Mercado Livre e da Shopee todo dia, de graça, no nosso grupo do WhatsApp.">
+<title>Garimpo de Ofertas — achadinhos do dia</title>
+<meta name="description" content="Achadinhos e ofertas do Mercado Livre e da Shopee com desconto de verdade, todo dia. Veja as ofertas de hoje e entre no grupo do WhatsApp (grátis).">
+<meta property="og:title" content="Garimpo de Ofertas — achadinhos do dia">
+<meta property="og:description" content="Ofertas do Mercado Livre e da Shopee com desconto de verdade, todo dia.">
 <style>
-  body{margin:0;min-height:100vh;font-family:'Segoe UI',Arial,sans-serif;color:#fff;text-align:center;background:linear-gradient(160deg,#0B3D2E,#06281E);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px;box-sizing:border-box}
-  h1{font-size:2.2rem;margin:.4em 0 .2em} h1 em{font-style:normal;color:#FBBF24}
-  p{font-size:1.1rem;opacity:.9;max-width:460px}
-  .btn{display:inline-block;margin-top:18px;background:#10B981;color:#fff;font-weight:800;font-size:1.25rem;padding:16px 30px;border-radius:16px;text-decoration:none}
-  .tag{width:96px;height:96px;border-radius:24px;background:#0E4A38;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:2rem;color:#0B3D2E}
-  .tag span{background:#FBBF24;padding:6px 14px;border-radius:10px}
-  footer{margin-top:40px;font-size:.85rem;opacity:.7} footer a{color:#fff}
+  :root { --bg:#0B3D2E; --deep:#06281E; --gold:#FBBF24; --green:#10B981; --ink:#0F172A; --muted:#64748B; --line:#E2E8F0; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:'Segoe UI',Arial,sans-serif; color:var(--ink); background:#F1F5F4; }
+  a { color: inherit; }
+  header { background:linear-gradient(160deg,var(--bg),var(--deep)); color:#fff; padding:28px 16px 34px; text-align:center; }
+  .brand { display:inline-flex; align-items:center; gap:12px; font-weight:800; font-size:1.35rem; }
+  .tag { width:48px; height:48px; border-radius:14px; background:#0E4A38; display:flex; align-items:center; justify-content:center; }
+  .tag span { background:var(--gold); color:var(--bg); font-weight:900; font-size:.95rem; padding:3px 8px; border-radius:7px; }
+  h1 { font-size:clamp(1.7rem,6vw,2.6rem); margin:18px 0 8px; line-height:1.1; }
+  h1 em { font-style:normal; color:var(--gold); }
+  header p { margin:0 auto; max-width:560px; opacity:.9; font-size:1.05rem; }
+  .cta { display:inline-block; margin-top:20px; background:var(--green); color:#fff; font-weight:800; font-size:1.15rem; padding:15px 26px; border-radius:14px; text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,.25); }
+  nav.legal { margin-top:16px; font-size:.9rem; opacity:.85; }
+  nav.legal a { color:#fff; margin:0 8px; }
+  main { max-width:1100px; margin:0 auto; padding:24px 16px 40px; }
+  h2 { font-size:1.35rem; margin:8px 0 4px; }
+  .sub { color:var(--muted); margin:0 0 18px; font-size:.95rem; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px; }
+  .card { background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; border:1px solid var(--line); text-decoration:none; }
+  .img { aspect-ratio:1; display:flex; align-items:center; justify-content:center; padding:14px; position:relative; }
+  .img img { max-width:100%; max-height:100%; object-fit:contain; }
+  .off { position:absolute; top:10px; right:10px; background:var(--gold); color:var(--ink); font-weight:900; font-size:.9rem; padding:4px 9px; border-radius:999px; }
+  .store { position:absolute; top:10px; left:10px; font-size:.72rem; font-weight:800; padding:3px 8px; border-radius:999px; background:#FFE600; color:#2D3277; }
+  .store.shopee { background:#EE4D2D; color:#fff; }
+  .info { padding:12px 14px 14px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:6px; flex:1; }
+  .t { font-size:.92rem; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .old { color:var(--muted); text-decoration:line-through; font-size:.85rem; }
+  .price { font-size:1.4rem; font-weight:900; color:var(--bg); }
+  .go { margin-top:auto; text-align:center; background:var(--bg); color:#fff; font-weight:700; padding:9px; border-radius:10px; font-size:.92rem; }
+  .empty { color:var(--muted); padding:20px 0; }
+  section.how { margin-top:36px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px; }
+  section.how ol { margin:8px 0 0; padding-left:20px; line-height:1.7; }
+  footer { text-align:center; color:var(--muted); font-size:.88rem; padding:24px 16px 40px; }
+  footer a { margin:0 8px; }
 </style>
 </head>
 <body>
-  <div class="tag"><span>GO</span></div>
-  <h1>Garimpo de <em>Ofertas</em></h1>
-  <p>Achadinhos do Mercado Livre e da Shopee com desconto de verdade, todo dia. Entre no nosso grupo do WhatsApp — é grátis.</p>
-  <a class="btn" href="https://chat.whatsapp.com/IborTiSVEL41oAlefDVU2Y">Entrar no grupo do WhatsApp</a>
-  <footer><a href="termos.html">Termos de Uso</a> · <a href="privacidade.html">Política de Privacidade</a></footer>
+<header>
+  <div class="brand"><div class="tag"><span>GO</span></div>Garimpo de Ofertas</div>
+  <h1>Achadinhos com <em>desconto de verdade</em>, todo dia</h1>
+  <p>A gente garimpa as melhores ofertas do Mercado Livre e da Shopee, confere o histórico de preço e manda só o que vale a pena.</p>
+  <a class="cta" href="https://chat.whatsapp.com/IborTiSVEL41oAlefDVU2Y">📲 Entrar no grupo do WhatsApp (grátis)</a>
+  <nav class="legal"><a href="termos.html">Termos de Uso</a> · <a href="privacidade.html">Política de Privacidade</a></nav>
+</header>
+
+<main>
+  <h2>🔥 Ofertas de hoje</h2>
+  <p class="sub" id="upd">Carregando…</p>
+  <div class="grid" id="grid"></div>
+
+  <section class="how">
+    <h2>Como funciona</h2>
+    <ol>
+      <li>Nosso robô procura ofertas o dia todo no Mercado Livre e na Shopee.</li>
+      <li>Descarta desconto falso (quando o “preço antigo” foi inflado) comparando com o histórico de preços.</li>
+      <li>As melhores vão para o grupo do WhatsApp, para o Instagram <a href="https://www.instagram.com/ogarimpodeofertas99/">@ogarimpodeofertas99</a> e aparecem aqui.</li>
+    </ol>
+    <p class="sub" style="margin-top:12px">Preço e estoque mudam rápido: confira na loja antes de comprar. Alguns links são de afiliado — a loja pode nos pagar uma comissão, sem custo extra para você.</p>
+  </section>
+</main>
+
+<footer>
+  © Garimpo de Ofertas · <a href="termos.html">Termos de Uso</a> · <a href="privacidade.html">Política de Privacidade</a>
+</footer>
+
+<script>
+  const brl = (n) => n == null ? '' : n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  fetch('ofertas.json?' + Date.now())
+    .then((r) => r.json())
+    .then(({ updatedAt, offers }) => {
+      document.getElementById('upd').textContent = offers.length
+        ? `${offers.length} ofertas · atualizado ${new Date(updatedAt).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`
+        : '';
+      document.getElementById('grid').innerHTML = offers.length
+        ? offers.map((o) => {
+            const pct = o.originalPrice > o.price ? Math.round((1 - o.price / o.originalPrice) * 100) : 0;
+            const shopee = o.store === 'shopee';
+            return `<a class="card" href="${esc(o.link)}" target="_blank" rel="noopener sponsored">
+              <div class="img"><img loading="lazy" src="${esc(o.image)}" alt="">${pct ? `<span class="off">-${pct}%</span>` : ''}<span class="store${shopee ? ' shopee' : ''}">${shopee ? 'Shopee' : 'Mercado Livre'}</span></div>
+              <div class="info"><div class="t">${esc(o.title)}</div>${pct ? `<div class="old">${brl(o.originalPrice)}</div>` : ''}<div class="price">${brl(o.price)}</div><div class="go">Ver oferta</div></div></a>`;
+          }).join('')
+        : '<p class="empty">As ofertas de hoje aparecem aqui ao longo do dia. Enquanto isso, entre no grupo!</p>';
+    })
+    .catch(() => { document.getElementById('upd').textContent = ''; document.getElementById('grid').innerHTML = '<p class="empty">Não consegui carregar as ofertas agora. Entre no grupo do WhatsApp para ver todas!</p>'; });
+</script>
 </body>
 </html>
