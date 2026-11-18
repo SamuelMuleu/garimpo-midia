@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entrar no grupo — Garimpo de Ofertas</title>
+<meta name="description" content="Grupo grátis no WhatsApp com achadinhos do Mercado Livre e da Shopee com desconto de verdade, todo dia.">
+<style>
+  :root { --bg:#0B3D2E; --deep:#06281E; --gold:#FBBF24; --green:#25D366; --ink:#0F172A; --muted:#64748B; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Segoe UI',Arial,sans-serif; color:#fff; background:linear-gradient(170deg,var(--bg),var(--deep)); min-height:100vh; }
+  main { max-width:520px; margin:0 auto; padding:28px 16px 40px; text-align:center; }
+  .tag { width:64px; height:64px; border-radius:18px; background:#0E4A38; display:inline-flex; align-items:center; justify-content:center; }
+  .tag span { background:var(--gold); color:var(--bg); font-weight:900; padding:4px 9px; border-radius:8px; }
+  h1 { font-size:1.9rem; line-height:1.15; margin:16px 0 10px; }
+  h1 em { font-style:normal; color:var(--gold); }
+  p { margin:0 0 6px; opacity:.92; font-size:1.05rem; }
+  .cta { display:block; margin:22px 0 10px; background:var(--green); color:#06281E; font-weight:900; font-size:1.3rem; padding:18px; border-radius:16px; text-decoration:none; box-shadow:0 10px 24px rgba(0,0,0,.3); animation:pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { transform:scale(1.03); } }
+  .small { font-size:.85rem; opacity:.75; }
+  ul { list-style:none; padding:0; margin:22px 0 0; text-align:left; display:grid; gap:10px; }
+  li { background:rgba(255,255,255,.08); border-radius:12px; padding:12px 14px; }
+  .ofertas { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:22px; }
+  .of { background:#fff; color:var(--ink); border-radius:12px; padding:8px; font-size:.8rem; }
+  .of img { width:100%; aspect-ratio:1; object-fit:contain; }
+  .of b { display:block; color:var(--bg); font-size:.95rem; }
+  .of s { color:var(--muted); }
+  footer { margin-top:28px; font-size:.8rem; opacity:.7; }
+  footer a { color:#fff; }
+</style>
+</head>
+<body>
+<main>
+  <div class="tag"><span>GO</span></div>
+  <h1>Achadinhos com <em>desconto de verdade</em> no seu WhatsApp</h1>
+  <p>Grupo grátis de avisos: só a gente manda mensagem, sem spam e sem conversa.</p>
+  <a class="cta" href="https://chat.whatsapp.com/IborTiSVEL41oAlefDVU2Y">📲 Entrar no grupo (grátis)</a>
+  <p class="small">Você pode sair quando quiser.</p>
+  <div class="ofertas" id="of"></div>
+  <ul>
+    <li>🔎 Ofertas do Mercado Livre e da Shopee garimpadas o dia todo</li>
+    <li>📉 Conferimos o histórico de preço: desconto falso fica de fora</li>
+    <li>🔗 Link direto para a loja, é só tocar e comprar</li>
+  </ul>
+  <a class="cta" href="https://chat.whatsapp.com/IborTiSVEL41oAlefDVU2Y">📲 Quero entrar no grupo</a>
+  <footer>Alguns links são de afiliado: a loja pode nos pagar uma comissão, sem custo extra para você.<br><a href="termos.html">Termos</a> · <a href="privacidade.html">Privacidade</a></footer>
+</main>
+<script>
+  const brl = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  fetch('ofertas.json?' + Date.now()).then((r) => r.json()).then(({ offers }) => {
+    const top = offers.filter((o) => o.image && o.originalPrice > o.price).slice(0, 3);
+    document.getElementById('of').innerHTML = top.map((o) => `<div class="of"><img src="${esc(o.image)}" alt=""><s>${brl(o.originalPrice)}</s><b>${brl(o.price)}</b></div>`).join('');
+  }).catch(() => {});
+</script>
+</body>
+</html>
